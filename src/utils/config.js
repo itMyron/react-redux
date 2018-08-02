@@ -1,5 +1,6 @@
 import ENV from "../config";
-const { NODE_ENV = "production" } = process.env.REACT_APP_SECRET_API;
+const { REACT_APP_SECRET_API = process.env.NODE_ENV } = process.env;
+
 const option = {
     development: {
         host: process.env.REACT_APP_RECORDS_API_URL || ENV.devEnv.API_ROOT
@@ -15,9 +16,8 @@ const option = {
     }
 };
 
-
-const config = Object.assign({}, option[NODE_ENV], {
-    NODE_ENV: NODE_ENV
-})
+const config = Object.assign({}, option[REACT_APP_SECRET_API], {
+  REACT_APP_SECRET_API: REACT_APP_SECRET_API
+});
 
 export default config.host
